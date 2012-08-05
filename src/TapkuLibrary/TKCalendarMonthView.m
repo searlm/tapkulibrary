@@ -884,7 +884,10 @@
 		self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.bounds.size.width, self.tileBox.frame.size.height+self.tileBox.frame.origin.y);
 
 		self.shadow.frame = CGRectMake(0, self.frame.size.height-self.shadow.frame.size.height+21, self.shadow.frame.size.width, self.shadow.frame.size.height);
-		self.monthYear.text = [NSString stringWithFormat:@"%@ %@",[date monthString],[date yearString]];
+        
+        NSDate *localDate = [NSDate dateFromDateInformation:info];
+        self.monthYear.text = [NSString stringWithFormat:@"%@ %@",[localDate monthString],[localDate yearString]];
+
 		[currentTile selectDay:info.day];
 		
 		if([self.delegate respondsToSelector:@selector(calendarMonthView:monthDidChange:animated:)])
